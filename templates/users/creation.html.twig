@@ -1,0 +1,133 @@
+{% extends 'tabs_bootstrap4.html.twig' %}
+
+
+{% block menu1 %} Profile étape 1/2{% endblock %}
+{% block corpsmenu1 %}
+        <h6 class="c-grey-900">Nouveau Utilisateur</h6>
+        <div class="mT-30">
+            <form>
+
+                <div class="form-row"><div class="form-group col-md-8">
+                        <img src="{{ asset('cover_image.jpg') }}" class="rounded float-left" alt="..." width="200" height="200"/>
+
+                    </div>
+
+                </div>
+                <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <button type="button" class="btn cur-p btn-info float-right">Choisir..</button>
+                        </div>
+                    </div>
+
+                 <div class="form-row">
+                     <div class="form-group col-md-12">
+                         <label for="inputEmail4">Nom Complet</label>
+                         <input type="email" class="form-control" id="inputEmail4" placeholder="nom">
+                     </div>
+                     <div class="form-group col-md-12">
+                         <label for="inputEmail4">Nom d'utilisateur</label>
+                         <input type="email" class="form-control" id="inputEmail4" placeholder="username">
+                     </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputPassword4">Mot de passe</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputPassword4">Confirmation du mot de passe</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Confirmation">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Fonction</label>
+                        <select id="inputState" class="form-control">
+                            <option selected="selected">Choisir...</option>
+                            <option>...</option></select>
+                    </div>
+
+                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="gap-10 peers float-lg-right">
+                            <div class="peer"><button type="button" class="btn cur-p btn-outline-primary">Annuler</button></div>
+                            <div class="peer"><button type="button" class="btn cur-p btn-primary">Suivant ></button></div>
+                        </div>
+                    </div>
+                </div>
+
+                {#Une fois on clique sur le bouton suivant ,l'onglet 2 sera activé#}
+            </form>
+        </div>
+
+{% endblock %}
+
+{% block menu2 %}Privilèges étape 2/2{% endblock %}
+{% block titremenu2 %}Association des privilèges{% endblock %}
+{% block corpsmenu2 %}
+
+    <div class="bgc-white p-20 bd">
+        <div class="mT-30">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                <div class="col-sm-10"><div class="form-check"><label class="form-check-label">
+                            <input class="form-check-input" name="gridRadios" id="gridRadios1" value="option1" checked="checked" type="radio">
+                           Administrateur (principal)</label>
+                    </div>
+                    <br>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="gridRadios" id="gridRadios2" value="option2" type="radio">
+                            Administrateur</label>
+                    </div>
+                    <br>
+                    <div class="form-check disabled">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="gridRadios" id="gridRadios3" value="option3" type="radio">
+                            Contributeur</label>
+                    </div>
+
+                    <br>
+
+                </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="gap-10 peers float-lg-right">
+                            <div class="peer"><button type="button" class="btn cur-p btn-outline-primary">< Précédent</button></div>
+                            <div class="peer"><button type="button" class="btn cur-p btn-primary">Valider</button></div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function(){
+
+            var tab = 1;
+
+            $('#suivant').click(function(e){
+                e.preventDefault();
+                if(tab>3){
+                    tab = 1;
+                }else{
+                    tab++;
+                }
+                $('#myTab .nav-item a[href="#'+tab+'"]').tab('show');
+            });
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'tabs_bootstrap4.html.twig' %}
+
+{%  block message%}
+    {% if succes == true %}
+        <div class="alert alert-success" role="alert"> Utilisateur ajouté avec succès ! </div>
+    {% elseif (succes == false and succes !=null) %}
+        <div class="alert alert-danger" role="alert"> Erreur! La ligne n'a pas été ajouté! </div>
+    {% endif %}
+{% endblock %}
+
+{% block menu1 %} Profile étape 1/2{% endblock %}
+{% block corpsmenu1 %}
+    <h6 class="c-grey-900">Nouveau Utilisateur</h6>
+    <div class="mT-30">
+        {{ form_start(form) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+        {# Génération du label + error + widget pour un champ. #}
+        {# Génération manuelle et éclatée : #}
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_row(form.username, {'attr': {'class': 'form-control'}}) }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.username) }}
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+           {{ form_row(form.nomcomplet, {'attr': {'class': 'form-control'}}) }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.nomcomplet) }}
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.email) }}
+        </div>
+            <div class="col-sm-12">
+                {# Génération de l'input. #}
+                {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        {# Idem pour un autre champ. #}
+        {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+        {# Génération automatique des champs pas encore écrits.
+           Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+           et tous les champs cachés (type « hidden »). #}
+        {{ form_rest(form) }}
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block menu2 %}Privilèges étape 2/2{% endblock %}
+{% block titremenu2 %}Association des privilèges{% endblock %}
+<div class="form-group">
+    {# Génération du label. #}
+    {{ form_start(form) }}
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+    {{ form_row(form.privilege, {'attr': {'class': 'form-control'}}) }}
+    {# Affichage des erreurs pour ce champ précis. #}
+    {{ form_errors(form.privilege) }}
+
+    {{ form_rest(form) }}
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+</div>
+{% block corpsmenu2 %}
+
+{% endblock %}
+
